@@ -1,15 +1,15 @@
 #imprting time module 
-
+#important input changes to raw in put in python 2  and input in python3 inrder to run opengl python2 is used hence the program is changesd to python 2  fromat 
 import time
 import random as randd
 na = ""
-na = input("what is your name ")
+na = raw_input("what is your name ")
 print(na)
 #dictnary = { 6 : ["mad max","popeye","The fly","avatar","aliens","Batman","Escape"],7: ["Robocop","Titaic","Rain man","Tangled"],8 : []
 li = {1 : ["joker","once upon a time in Hollywood","Deadpool","spiderman"],
 2 : ["money heist","stranger things","13 reasons why","Peaky blinders","Breaking bad"]
 }
-
+dif_lvl = input("1.east\n 2. medium \n 3.ultra Hard")
 usr_chs = int(input("1.movies \n2.series "))
 while usr_chs > 2 :
 	print("error try again!")
@@ -58,19 +58,23 @@ def game_stats(g_ct,g_wrd):
 		print(" GAME STATUS\n curr_word : "+g_wrd)
 		print("guess left: "+str(g_ct)+"\n")
 	
-def play_wor():
-		count = 10
+def play_wor(count):
 		global temp
 		game_stats(count,temp)
 		char=""
 		while count > 0 :
-			char = input("guess : ")			#exeption 
+			char = raw_input("guess : ")			#exeption 
 			count=check_letter(char,count)
 			game_stats(count,temp)
 			print("character :  "+ char)
-
 pre_word()
-play_wor()
+
+if dif_lvl == 3 :
+	play_wor(1)
+elif dif_lvl in (1,2):
+	play_wor(dif_lvl*5)
+
+
 
 
 

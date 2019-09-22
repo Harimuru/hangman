@@ -5,6 +5,7 @@ import sys
 import math
 
 def Init():
+    print("init")
     glClearColor(0.0,0.0,0.0,0.0)
     gluOrtho2D(-150,150,-150,150)
 
@@ -40,19 +41,22 @@ def drawDDA(x1,y1,x2,y2):
 
 
 def plotpoints():
+    print("plotpoints")
     glClear(GL_COLOR_BUFFER_BIT)
     glColor3f(0.0,1.0,1.0)
     glPointSize(3)
     glBegin(GL_POINTS)
     print("ploting points ")
-    drawDDA(-75,-100,-25,-100)              # 1 
-    drawDDA(-50,50,50,50)                   # 3
-    drawDDA(-50,-100,-50,50)                # 2
-    drawDDA(50,25,50,50)                    # 4
+    for i in range(1,5):
+    	drawDDA(25*i,5,25*i,70)					#1
+    	drawDDA(25*i,-70,25*i,-5)				#2
+    drawDDA(15,60,110,15)
+    drawDDA(15,-15,110,-60)
     glEnd()
     glFlush()
 
 def main():
+    print("main")
     glutInit(sys.argv)
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB)
     glutInitWindowSize(500,500)
