@@ -5,12 +5,22 @@ import random as randd
 na = ""
 na = raw_input("what is your name ")
 print(na)
-#dictnary = { 6 : ["mad max","popeye","The fly","avatar","aliens","Batman","Escape"],7: ["Robocop","Titaic","Rain man","Tangled"],8 : []
-li = {1 : ["joker","once upon a time in Hollywood","Deadpool","spiderman"],
-2 : ["money heist","stranger things","13 reasons why","Peaky blinders","Breaking bad"]
+
+f1 = open("movie_list.txt","r")
+temp = f1.readline()
+movi_lst = temp.split("#")
+
+f2 = open("series_list.txt","r")
+temp1 = f2.readline()
+seis_lst = temp1.split("#")
+
+
+
+li = {1 : movi_lst,
+2 : seis_lst
 }
-dif_lvl = input("1.east\n 2. medium \n 3.ultra Hard")
-usr_chs = int(input("1.movies \n2.series "))
+dif_lvl = input(" 1.east\n 2. medium \n 3.ultra Hard \n")
+usr_chs = int(input("1.movies \n2.series \n"))
 while usr_chs > 2 :
 	print("error try again!")
 	usr_chs = int(input("enter either 1 or 2 \n"))
@@ -23,12 +33,15 @@ def pre_word():
 	global temp
 	Gword = randd.choice(li[usr_chs])
 	print("word  =   " + Gword)
+	if any(char.isdigit() for char in Gword ) :
+		print("Word contains Numbers")
+
 	word_count = 4
 	for x in Gword:
 		if x in "AEIOUaeiou":
 			temp = temp + x 
 			word_count = word_count-1
-		elif x == " ":
+		elif not x.isalnum():					
 			temp = temp + " "
 		else :
 			temp = temp + "#"
@@ -44,18 +57,18 @@ def check_letter(char,gct):
 						k[i] = Gword[i]
 		if k == list(temp):
 			gct = gct - 1
-		print("k = ")
-		print(k)
+		#print("k = ")
+		#print(k)
 		k1 = ""
 		for i in k :
     			k1= k1+i
-		print("k1  = "+k1)
+		#print("k1  = "+k1)
 		temp = k1
 
 		return(gct)
 
 def game_stats(g_ct,g_wrd):
-		print(" GAME STATUS\n curr_word : "+g_wrd)
+		print("\n\n\n\t\tGAME STATUS\n curr_word : "+g_wrd)
 		print("guess left: "+str(g_ct)+"\n")
 	
 def play_wor(count):
